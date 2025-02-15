@@ -49,7 +49,7 @@ class LinkedList {
     leader.next = newNode;
     newNode.next = pointerNode;
     this.length++;
-    return this.printList();
+    // return this.printList();
   }
   traverseToIndex(index) {
     let count = 0;
@@ -63,9 +63,28 @@ class LinkedList {
   remove(index) {
     let leader = this.traverseToIndex(index - 1); //6
     let deleteNode = leader.next;
-    console.log("deleteNode", deleteNode);
+    // console.log("deleteNode", deleteNode);
     leader.next = deleteNode.next;
     return this.printList();
+  }
+  reverse() {
+    if (!this.head.next) {
+      return this.head;
+    }
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+    //[1,2,3,4];
+    while (second) {
+      let temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+    console.log("head", this.head);
+    this.printList();
   }
 }
 
@@ -75,4 +94,6 @@ myLinkedList.append(8);
 
 myLinkedList.insert(1, 40);
 myLinkedList.insert(2, 2);
-myLinkedList.remove(2);
+
+myLinkedList.reverse();
+// [1,10,16,88]
