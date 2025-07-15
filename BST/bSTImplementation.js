@@ -37,6 +37,24 @@ class BST {
       }
     }
   }
+
+  //Look up
+  search(value) {
+    if (!this.root) return "Tree is empty";
+    let rootNode = this.root;
+    while (rootNode !== null) {
+      if (rootNode.value === value) {
+        console.log("Is value available: ", true);
+        return true;
+      } else if (rootNode.value < value) {
+        rootNode = rootNode.right;
+      } else {
+        rootNode = rootNode.left;
+      }
+    }
+    console.log("Value is not available.");
+    return false;
+  }
 }
 
 function traverse(node) {
@@ -55,5 +73,6 @@ tree.insert(20);
 tree.insert(170);
 tree.insert(15);
 tree.insert(1);
-JSON.stringify(traverse(tree.root));
-console.log("BST", tree);
+tree.search(4);
+// JSON.stringify(traverse(tree.root));
+// console.log("BST", tree);
