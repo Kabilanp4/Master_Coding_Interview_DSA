@@ -55,6 +55,40 @@ class BST {
     console.log("Value is not available.");
     return false;
   }
+
+  breadthFirstSearch() {
+    let currentNode = this.root;
+    let list = [];
+    let queue = [];
+    queue.push(currentNode);
+    while (queue.length > 0) {
+      currentNode = queue.shift();
+      list.push(currentNode.value);
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+    return list;
+  }
+
+  breadthFirstSearchRecursive(queue, list) {
+    if (!queue.length) {
+      return list;
+    }
+    let currentNode = queue.shift();
+    list.push(currentNode.value);
+    if (currentNode.left) {
+      queue.push(currentNode.left);
+    }
+
+    if (currentNode.right) {
+      queue.push(currentNode.right);
+    }
+    return this.breadthFirstSearchRecursive(queue, list);
+  }
 }
 
 function traverse(node) {
@@ -76,3 +110,8 @@ tree.insert(1);
 tree.search(4);
 // JSON.stringify(traverse(tree.root));
 // console.log("BST", tree);
+//const BFSList = tree.breadthFirstSearch();
+const BFSRList = tree.breadthFirstSearchRecursive([tree.root], []);
+console.log("BFSR list ", BFSRList);
+
+//BFS takes more memory space.
