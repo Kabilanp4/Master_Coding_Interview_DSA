@@ -89,6 +89,47 @@ class BST {
     }
     return this.breadthFirstSearchRecursive(queue, list);
   }
+
+  DFSInorder() {
+    return traverseInorder(this.root, []);
+  }
+  DFSPreOrder() {
+    return traversePreOrder(this.root, []);
+  }
+  DFSPostOrder() {
+    return traversePostOrder(this.root, []);
+  }
+}
+
+function traverseInorder(node, list) {
+  if (node.left) {
+    traverseInorder(node.left, list);
+  }
+  list.push(node.value);
+  if (node.right) {
+    traverseInorder(node.right, list);
+  }
+  return list;
+}
+function traversePreOrder(node, list) {
+  list.push(node.value);
+  if (node.left) {
+    traversePreOrder(node.left, list);
+  }
+  if (node.right) {
+    traversePreOrder(node.right, list);
+  }
+  return list;
+}
+function traversePostOrder(node, list) {
+  if (node.left) {
+    traversePostOrder(node.left, list);
+  }
+  if (node.right) {
+    traversePostOrder(node.right, list);
+  }
+  list.push(node.value);
+  return list;
 }
 
 function traverse(node) {
@@ -111,7 +152,14 @@ tree.search(4);
 // JSON.stringify(traverse(tree.root));
 // console.log("BST", tree);
 //const BFSList = tree.breadthFirstSearch();
-const BFSRList = tree.breadthFirstSearchRecursive([tree.root], []);
-console.log("BFSR list ", BFSRList);
+//const BFSRList = tree.breadthFirstSearchRecursive([tree.root], []);
+//const DFSPreOrder = tree.DFSInorder();
+//const DFSPreOrder = tree.DFSPreOrder();
+const DFSPostOrder = tree.DFSPostOrder();
+console.log("DFSPostOrder list ", DFSPostOrder);
 
 //BFS takes more memory space.
+// DFS
+//  1.Inorder
+//  2.PreOrder
+//  3.PostOrder
