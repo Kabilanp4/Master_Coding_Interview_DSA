@@ -78,7 +78,7 @@ class BST {
     if (!queue.length) {
       return list;
     }
-    let currentNode = queue.shift();
+    let currentNode = queue.shift(); //it remove the first element and will return the removed value
     list.push(currentNode.value);
     if (currentNode.left) {
       queue.push(currentNode.left);
