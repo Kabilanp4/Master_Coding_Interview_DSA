@@ -39,3 +39,7 @@ newArr.push("this");
 newArr.push("is");
 newArr.delete(0);
 console.log(newArr);
+
+//Push - returns the arr length
+//Pop - removes the last element and removes it
+//Delete - deletes the particular index number and shift the items

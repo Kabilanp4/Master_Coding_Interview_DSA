@@ -15,7 +15,6 @@ class LinkedList {
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
-    // console.log("headValue", this.head);
   }
   prepend(val) {
     const newNode = {
@@ -63,7 +62,6 @@ class LinkedList {
   remove(index) {
     let leader = this.traverseToIndex(index - 1); //6
     let deleteNode = leader.next;
-    // console.log("deleteNode", deleteNode);
     leader.next = deleteNode.next;
     return this.printList();
   }
@@ -83,17 +81,62 @@ class LinkedList {
     }
     this.head.next = null;
     this.head = first;
-    console.log("head", this.head);
     this.printList();
+  }
+  sort() {
+    this.head = this.mergeSort(this.head);
+    this.printList();
+  }
+  mergeSort(head) {
+    if (!head || !head.next) return head; //base case
+    // getting the middle node and split into two
+    let middleNode = this.getMiddle(head);
+    let nextOfMiddle = middleNode.next;
+    middleNode.next = null;
+
+    let left = this.mergeSort(head); // or middleNode sharing a same reference
+    let right = this.mergeSort(nextOfMiddle);
+    console.log("left and right: ", left, right);
+    return this.sortedMerge(left, right);
+  }
+  sortedMerge(a, b) {
+    console.log("a and b: ", a, b);
+    if (!a) return b;
+    if (!b) return a;
+    let result;
+    if (a.value <= b.value) {
+      // 5< 6
+      result = a; // result = {value:5, next: null}
+      result.next = this.sortedMerge(a.next, b); // (null,{value:6, next:nulll})
+    } else {
+      result = b;
+      result.next = this.sortedMerge(a, b.next);
+    }
+    console.log("result", result);
+    return result; // result = {value: 5, next:null}
+  }
+  getMiddle(head) {
+    let slow = head;
+    let fast = head;
+    while (fast.next && fast.next.next) {
+      slow = slow.next; //  Moves 1 step
+      fast = fast.next.next; // Moves 2 steps
+    }
+    return slow;
   }
 }
 
-const myLinkedList = new LinkedList(5);
-myLinkedList.append(6);
-myLinkedList.append(8);
+const myLinkedList = new LinkedList(2);
+myLinkedList.append(4);
+myLinkedList.append(1);
+myLinkedList.append(3);
+myLinkedList.sort();
 
-myLinkedList.insert(1, 40);
-myLinkedList.insert(2, 2);
+// myLinkedList.insert(1, 40);
+// myLinkedList.insert(2, 2);
 
-myLinkedList.reverse();
+// myLinkedList.reverse();
 // [1,10,16,88]
+
+//Singly linked list methods
+// 1. append 2. prepend 3. insert 4.traverse 5. reverse
