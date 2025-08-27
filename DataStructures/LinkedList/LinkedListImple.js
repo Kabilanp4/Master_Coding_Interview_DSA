@@ -90,17 +90,15 @@ class LinkedList {
   mergeSort(head) {
     if (!head || !head.next) return head; //base case
     // getting the middle node and split into two
-    let middleNode = this.getMiddle(head);
+    let middleNode = this.getMiddle(head); //Holding mid node referece
     let nextOfMiddle = middleNode.next;
-    middleNode.next = null;
-
-    let left = this.mergeSort(head); // or middleNode sharing a same reference
+    middleNode.next = null; // affecting the head becasue of the mid reference.
+    console.log("head from mergeSort", head);
+    let left = this.mergeSort(head);
     let right = this.mergeSort(nextOfMiddle);
-    console.log("left and right: ", left, right);
     return this.sortedMerge(left, right);
   }
   sortedMerge(a, b) {
-    console.log("a and b: ", a, b);
     if (!a) return b;
     if (!b) return a;
     let result;
@@ -112,7 +110,6 @@ class LinkedList {
       result = b;
       result.next = this.sortedMerge(a, b.next);
     }
-    console.log("result", result);
     return result; // result = {value: 5, next:null}
   }
   getMiddle(head) {
@@ -122,6 +119,7 @@ class LinkedList {
       slow = slow.next; //  Moves 1 step
       fast = fast.next.next; // Moves 2 steps
     }
+    console.log("Slow", slow);
     return slow;
   }
 }

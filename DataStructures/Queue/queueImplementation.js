@@ -68,3 +68,9 @@ myQueue.dequeue();
 //Matt
 //Pavel
 //Samir
+
+// Queue methods
+// 1.enqueue() - add element at the last
+// 2.dequeue() - remove the first element
+// 3.peek()    - return the first element
+// 4.isEmpty() - check the first
