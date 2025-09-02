@@ -28,7 +28,7 @@ class Minheap {
     console.log("Heap Values : ", this.heap);
     return this.heap;
   }
-  removeSmallest() {
+  removeSmallestHasBug() {
     let smallest = this.heap[1];
     if (this.heap.length > 2) {
       this.heap[1] = this.heap[this.heap.length - 1];
@@ -61,6 +61,34 @@ class Minheap {
       }
     } else if (this.heap.length === 2) {
       this.heap.splice(1, 1);
+    } else {
+      return null;
+    }
+    return smallest;
+  }
+  removeSmallestWorking() {
+    let smallest = heap[1];
+    if (heap.length > 2) {
+      heap[1] = heap[heap.length - 1];
+      heap.splice(heap.length - 1);
+
+      let i = 1;
+      while (true) {
+        let left = 2 * i;
+        let right = 2 * i + 1;
+        let smallestInd = i;
+        if (left < heap.length && heap[left] < heap[smallestInd]) {
+          smallestInd = left;
+        }
+        if (right < heap.length && heap[right] < heap[smallestInd]) {
+          smallestInd = right;
+        }
+        if (smallestInd === i) break;
+        [heap[i], heap[smallestInd]] = [heap[smallestInd], heap[i]];
+        i = smallestInd;
+      }
+    } else if (heap.length === 1) {
+      heap.splice(1, 1);
     } else {
       return null;
     }
