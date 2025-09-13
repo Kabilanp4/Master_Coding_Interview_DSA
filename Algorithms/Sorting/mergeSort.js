@@ -1,46 +1,40 @@
-function mergeSort(arr) {
-  if (arr.length === 1) {
-    return arr;
+function sortArray(nums) {
+  if (nums.length === 1) {
+    return nums;
   }
-
-  //Split the arrays
-  const mid = arr.length / 2;
-  const left = arr.slice(0, mid);
-  const right = arr.slice(mid);
-  return merge(mergeSort(left), mergeSort(right));
+  const mid = Math.floor(nums / 2);
+  const left = nums.slice(0, mid);
+  const right = nums.slice(mid);
+  return merge(sortArray(left), sortArray(right));
 }
 
 function merge(left, right) {
-  console.log(left, right); //left =1, right=3,4
   let sortedArr = [];
-  let i = 0,
-    j = 0,
-    k = 0;
+  let i = 0;
+  let j = 0;
+  let k = 0;
   while (i < left.length && j < right.length) {
-    if (left[i] < right[j]) {
-      //1<3
-      sortedArr[k] = left[i]; //sort[0]=1, i=1, k=1;
+    if (left[i] > right[j]) {
+      sortedArr[k] = right[i];
       i++;
     } else {
-      sortedArr[k] = right[j];
+      sortedArr[k] = left[j];
       j++;
     }
     k++;
   }
   while (i < left.length) {
-    //1<1
     sortedArr[k] = left[i];
-    k++;
     i++;
+    k++;
   }
   while (j < right.length) {
-    //0<2,1<2,
     sortedArr[k] = right[j];
-    k++;
     j++;
+    k++;
   }
-  console.log("sortedArr iteration:", sortedArr);
   return sortedArr;
 }
 
-const sortedArr = mergeSort([6, 5, 1, 4, 3]);
+const sorarr = sortArray([8, 32, 3, 55, 2, 1, 3, 42]);
+console.log("sortedArr", sorarr);
