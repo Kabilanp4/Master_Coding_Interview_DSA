@@ -1,0 +1,11 @@
+start = 0
+sum = 0
+answer = infinity  # or 0 depending on problem
+
+for end in range(0, n):
+    sum += nums[end]     # expand the window
+
+    while condition is satisfied:
+        update answer (like minLen, maxLen, etc.)
+        sum -= nums[start]   # shrink from the left
+        start += 1
