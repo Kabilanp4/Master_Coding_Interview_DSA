@@ -136,5 +136,5 @@ myLinkedList.sort();
 // myLinkedList.reverse();
 // [1,10,16,88]
 
-//Singly linked list methods
-// 1. append 2. prepend 3. insert 4.traverse 5. reverse
+//linked list methods
+// 1. append 2. prepend 3. insert 4.traverse 5. reverse 6.remove
