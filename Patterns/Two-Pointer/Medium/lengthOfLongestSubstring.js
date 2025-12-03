@@ -13,5 +13,5 @@ function lengthOfLongestSubstring(s) {
   }
   return maxLength === -Infinity ? 0 : maxLength;
 }
-const length = lengthOfLongestSubstring("pwwkew");
+const length = lengthOfLongestSubstring(" ");
 console.log("longest substring length", length);
