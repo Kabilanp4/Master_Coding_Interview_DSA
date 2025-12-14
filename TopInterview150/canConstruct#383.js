@@ -22,5 +22,3 @@ var canConstruct = function (ransomNote, magazine) {
   return count === Object.keys(obj)?.length;
 };
 //Time Complexity O(n+m)
-const result = canConstruct("aaa", "aaba");
-console.log("result", result);
