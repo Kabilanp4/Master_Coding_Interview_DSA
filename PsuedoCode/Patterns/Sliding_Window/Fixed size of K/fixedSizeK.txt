@@ -5,7 +5,7 @@ answer = -infinity   # or 0 depending on problem
 for end in range(0, n):
     sum += nums[end]     # expand the window
 
-    if end - start + 1 == k: // this is correct, while loop is not required.
+    if end - start + 1 == k:
         update answer (like maxSum, minSum, avg, etc.)
         sum -= nums[start]   # shrink from left
         start += 1           # slide the window forward

@@ -1,0 +1,41 @@
+1.Frequency Counting pattern :
+Use Frequency counting pattern when the order doesn't matter.
+Avoid frequency counting when:
+
+Order matters (subarrays, sequences)
+
+Continuous range logic (sliding window fits better)
+
+Index-based problems (two pointers often better)
+
+1️⃣ Sliding Window (MOST COMMON when order matters)
+Use this when:
+
+You need a continuous subarray / substring
+
+The window moves left → right
+
+You’re asked for:
+
+max / min / longest / shortest
+
+sum / average
+
+number of valid subarrays
+
+2️⃣ Two Pointers (order matters, but not necessarily continuous)
+Use this when:
+
+You have sorted data
+
+You compare elements from both ends
+
+You move pointers based on conditions
+
+Question says…	Use this pattern
+Subarray / substring	Sliding Window
+Sorted + pair	Two Pointers
+Range sum	Prefix Sum
+Find min/max answer	Binary Search
+Next / previous element	Stack
+Order doesn’t matter	Frequency Counting
