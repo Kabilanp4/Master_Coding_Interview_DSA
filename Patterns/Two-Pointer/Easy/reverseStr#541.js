@@ -11,7 +11,7 @@ var reverseStr = function (s, k) {
     if (fast < k) {
       [str[slow], str[fast]] = [str[fast], str[slow]];
       slow++;
-    }else {
+    } else {
       slow = 2 * k - 1;
     }
   }
