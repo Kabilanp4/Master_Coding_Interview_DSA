@@ -10,3 +10,7 @@ function outer() {
 const fn = outer();
 fn(); // 1
 fn(); // 2
+
+// Definition
+// A closure is created when a function is defined inside another function AND
+// it uses variables from the outer function.

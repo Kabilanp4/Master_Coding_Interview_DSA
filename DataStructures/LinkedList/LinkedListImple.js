@@ -19,7 +19,7 @@ class LinkedList {
   prepend(val) {
     const newNode = {
       value: val,
-      next: {},
+      next: null,
     };
     newNode.next = this.head;
     this.head = newNode;
