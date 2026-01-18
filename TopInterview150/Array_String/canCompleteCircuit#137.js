@@ -4,26 +4,29 @@
  * @return {number}
  */
 var canCompleteCircuit = function (gas, cost) {
-  // edge case here
-  let slow = 0;
-  let fast = 1;
-  let length = 2 * gas.length;
-  // [1, 2, 3, 4, 5], [3, 4, 5, 1, 2]
-  let tankVal = gas[0] - cost[0] + gas[1];
-  while (fast < length) {
-    if (slow === fast) {
-      return gas[slow];
-    }
+  //edge case here
+  if (gas?.length !== cost?.length) return -1;
 
-    if (tankVal <= 0) {
-      slow++;
+  for (let i = 0; i < gas.length; i++) {
+    if (gas[i] - cost[i] < 0) continue;
+    let j = i;
+    let tankVal = gas[i];
+    let iNext = i + 1;
+    while (tankVal > 0) {
+      if (iNext === gas.length - 1) iNext = 0;
+      if (j === gas.length - 1) j = 0;
+      if (i === iNext) {
+        return i;
+      } else {
+        tankVal = tankVal - cost[j] + gas[iNext];
+      }
+      iNext++;
+      j++;
     }
-    tankVal = gas[fast] - cost[fast] + cost[fast + 1];
-    fast++;
   }
   return -1;
 };
-const output = canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]);
+const output = canCompleteCircuit([4, 0, 1], [3, 2, 1]);
 console.log("output", output);
-
-// Will code later
+// workaround here
+// 4
