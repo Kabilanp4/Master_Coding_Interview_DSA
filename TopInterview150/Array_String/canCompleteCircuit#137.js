@@ -7,26 +7,20 @@ var canCompleteCircuit = function (gas, cost) {
   //edge case here
   if (gas?.length !== cost?.length) return -1;
 
+  let totalTank = 0;
+  let currTank = 0;
+  let start;
   for (let i = 0; i < gas.length; i++) {
-    if (gas[i] - cost[i] < 0) continue;
-    let j = i;
-    let tankVal = gas[i];
-    let iNext = i + 1;
-    while (tankVal > 0) {
-      if (iNext === gas.length - 1) iNext = 0;
-      if (j === gas.length - 1) j = 0;
-      if (i === iNext) {
-        return i;
-      } else {
-        tankVal = tankVal - cost[j] + gas[iNext];
-      }
-      iNext++;
-      j++;
+    const gain = gas[i] - cost[i];
+    currTank += gain;
+    totalTank += gain;
+    while (currTank < 0) {
+      currTank = 0;
+      start = i + 1;
     }
   }
-  return -1;
+  return totalTank >= 0 ? start : -1;
 };
-const output = canCompleteCircuit([4, 0, 1], [3, 2, 1]);
-console.log("output", output);
-// workaround here
-// 4
+const result = canCompleteCircuit([2, 3, 4], [3, 4, 3]);
+console.log("output", result);
+// -2 + -2+-2+3+3 = -6 + 6 = 0
