@@ -1,0 +1,202 @@
+🔥 Greedy Problem Identification & Solving Pattern
+
+Greedy problems are not about formulas — they are about safe local decisions.
+
+1️⃣ How to IDENTIFY a greedy problem
+
+Ask these questions (in this order):
+
+✅ Q1: Is the problem asking for
+
+maximum / minimum?
+
+feasible / possible?
+
+earliest / latest?
+
+farthest / closest?
+
+👉 Strong greedy signal.
+
+✅ Q2: Can I make a decision step-by-step?
+
+If you can say:
+
+“At this step, I can decide something without knowing the future”
+
+→ likely greedy.
+
+✅ Q3: If a choice fails, can I discard a range of choices?
+
+This is the BIG hint (Gas Station case).
+
+Examples:
+
+If start i fails → discard [i … j]
+
+If jump fails → discard earlier jumps
+
+If interval overlaps → discard one interval
+
+✅ Q4: Does sorting help?
+
+Many greedy problems start with:
+
+sorting by end time
+
+sorting by size
+
+sorting by position
+
+If sorting simplifies decisions → greedy.
+
+2️⃣ Core Greedy Mental Pattern (VERY IMPORTANT)
+
+Make the best local choice that does not break global feasibility
+
+You must always be able to say:
+
+“This choice will never hurt an optimal solution.”
+
+3️⃣ Universal Greedy PSEUDOCODE Template
+🔹 Pattern 1: Elimination-based greedy (Gas Station, Jump Game)
+initialize globalCheck
+initialize localState
+initialize candidateAnswer
+
+for each element in order:
+    update globalCheck
+    update localState
+
+    if localState becomes invalid:
+        eliminate all previous candidates
+        move candidateAnswer forward
+        reset localState
+
+if globalCheck is valid:
+    return candidateAnswer
+else:
+    return failure
+
+Used in:
+
+Gas Station
+
+Jump Game
+
+Split Array problems
+
+Prefix sum greedy
+
+4️⃣ Greedy with Sorting (Intervals, Scheduling)
+sort input by greedy key (end time / position / size)
+
+initialize result
+initialize lastChosen
+
+for each item:
+    if item is compatible with lastChosen:
+        choose item
+        update lastChosen
+
+Used in:
+
+Meeting Rooms
+
+Non-overlapping intervals
+
+Activity selection
+
+5️⃣ Greedy with Max / Min Tracking
+initialize bestSoFar
+initialize answer
+
+for each element:
+    update bestSoFar
+    update answer using bestSoFar
+
+Used in:
+
+Stock buy/sell
+
+Max subarray
+
+Best time problems
+
+6️⃣ Gas Station — Greedy Pattern Applied
+total = 0
+current = 0
+start = 0
+
+for i from 0 to n-1:
+    gain = gas[i] - cost[i]
+    total += gain
+    current += gain
+
+    if current < 0:
+        start = i + 1
+        current = 0
+
+if total >= 0:
+    return start
+else:
+    return -1
+
+
+Pattern type: Elimination-based greedy
+
+7️⃣ How to TRAIN greedy thinking (important)
+❌ Don’t do this
+
+Jump straight to proof
+
+Try all possibilities
+
+Use nested loops
+
+✅ Do this instead
+
+Try brute-force once
+
+Observe why it fails
+
+Ask: “Can I discard choices permanently?”
+
+Write a rule to discard
+
+Prove later
+
+8️⃣ One-line greedy checklist (memorize this)
+
+If a local failure makes future choices worse, discard it permanently.
+
+9️⃣ Problems to practice with this mindset
+
+If you want to master greedy, practice in this order:
+
+Gas Station
+
+Jump Game
+
+Jump Game II
+
+Maximum Subarray
+
+Non-overlapping Intervals
+
+Partition Labels
+
+(All use the patterns above)
+
+🔒 Final takeaway
+
+Greedy = safe local choice
+
+Pattern > formula
+
+Proof validates, logic guides
+
+Elimination is the strongest greedy signal
+
+
+//“Make the best local choice and move on.”
