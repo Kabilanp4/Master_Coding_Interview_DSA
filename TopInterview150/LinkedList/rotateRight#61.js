@@ -105,3 +105,5 @@ var rotateRight = function (head, k) {
 
   return head;
 };
+
+// Learned the imporatance of readability and maintainability.
