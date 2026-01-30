@@ -200,3 +200,6 @@ Elimination is the strongest greedy signal
 
 
 //“Make the best local choice and move on.”
+A greedy algorithm means:
+
+At each step, make the best valid choice right now without worrying about the future.
