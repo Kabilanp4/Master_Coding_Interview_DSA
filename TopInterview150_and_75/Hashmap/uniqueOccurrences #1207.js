@@ -19,5 +19,3 @@ var uniqueOccurrences = function (arr) {
   }
   return true;
 };
-
-// just to keep the streak.
