@@ -1,0 +1,22 @@
+“Partition an array with a small fixed number of categories (usually 3) into separate regions in one pass using three pointers.”
+
+Even shorter mental trigger:
+
+Few distinct values → partition with 3 pointers
+
+Example where this applies:
+
+Sort Colors
+
+arrays containing only {0,1,2} or {negative, zero, positive} types.
+
+Ultra-short memory trick
+
+If you see:
+
+array contains only 3 types of values
+sort/group them in-place
+
+Your brain should immediately think:
+
+Dutch National Flag
