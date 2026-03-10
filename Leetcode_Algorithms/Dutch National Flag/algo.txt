@@ -20,3 +20,23 @@ sort/group them in-place
 Your brain should immediately think:
 
 Dutch National Flag
+
+ !----When Dutch National Flag is the Right Choice ----!
+
+Use it when the problem says something like:
+
+Elements belong to 3 categories
+
+Partition into less than / equal / greater than
+
+0, 1, 2 type problems
+
+in-place rearrangement
+
+O(n) time and O(1) space
+
+
+You can only use this algorithm if the relative order of the element doesn't matter.
+
+
+If the order is really matters, then you need to use stable partition.
